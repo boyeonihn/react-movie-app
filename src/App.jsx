@@ -1,17 +1,17 @@
 import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import { Home } from './routes/Home';
 import { Detail } from './routes/Detail';
 import { ErrorPage } from './error-page';
 
-const App = createBrowserRouter([
+const App = createHashRouter([
   {
-    path: `${process.env.PUBLIC_URL}/`,
+    path: `/`,
     element: <Home />,
     errorElement: <ErrorPage />,
   },
   {
-    path: `${process.env.PUBLIC_URL}/movie/:movieId`,
+    path: `/movie/:movieId`,
     element: <Detail />,
     errorElement: <ErrorPage />,
   },

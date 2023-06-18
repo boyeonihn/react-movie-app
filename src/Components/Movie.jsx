@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
-export const Movie = ({ title, genres, coverImage, id, summary }) => {
+export const Movie = ({ title, genres, coverImage, id, summary, onClick }) => {
   return (
     <section className="flex text-teal-700 bg-orange-100 p-8 rounded-lg w-full">
       <img src={coverImage} alt={title} />
-      <div className="p-2 max-w-fit w-3/6 ml-2">
+      <div className="movie-info p-2 max-w-fit w-3/6 ml-2">
         <h2 className="font-extra-bold text-lg text-red-400 font-semibold hover:text-teal-600">
           <Link to={`/movie/${id}`}>{title}</Link>
         </h2>
@@ -17,6 +19,9 @@ export const Movie = ({ title, genres, coverImage, id, summary }) => {
             ''
           )}
         </p>
+        <span onClick={onClick}>
+          <FontAwesomeIcon icon={faHeart} />
+        </span>
         <ul className="flex flex-wrap">
           {genres
             ? genres.map((genre, index) => (

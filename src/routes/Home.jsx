@@ -17,21 +17,24 @@ export const Home = () => {
     getMovies();
   }, []);
   return (
-    <section>
-      {loading ? (
-        <h1>Loading...</h1>
-      ) : (
-        movies.map((movie) => (
-          <Movie
-            key={movie.id}
-            id={movie.id}
-            coverImage={movie.medium_cover_image}
-            summary={movie.summary}
-            genres={movie.genres}
-            title={movie.title}
-          />
-        ))
-      )}
-    </section>
+    <div>
+      <h1 className="font-semibold mb-5 text-3xl">Movie Database</h1>
+      <main className="grid grid-cols-2 gap-8 box-border">
+        {loading ? (
+          <h2 className="font-extra-bold">Loading...</h2>
+        ) : (
+          movies.map((movie) => (
+            <Movie
+              key={movie.id}
+              id={movie.id}
+              coverImage={movie.medium_cover_image}
+              summary={movie.summary}
+              genres={movie.genres}
+              title={movie.title}
+            />
+          ))
+        )}
+      </main>
+    </div>
   );
 };

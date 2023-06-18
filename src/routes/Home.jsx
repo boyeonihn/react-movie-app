@@ -12,9 +12,10 @@ export const Home = () => {
       .querySelector('h2').innerText;
     if (!likedMovies.includes(movieTitle)) {
       setLikedMovies((currentList) => [movieTitle, ...currentList]);
-      console.log('added');
     } else {
-      console.log('already in the list');
+      setLikedMovies((currentList) =>
+        currentList.filter((movie) => movie != movieTitle)
+      );
     }
   };
   const getMovies = async () => {
@@ -32,7 +33,11 @@ export const Home = () => {
   return (
     <div>
       <h1 className="font-semibold mb-5 text-3xl">Movie Database</h1>
-      {likedMovies.length > 0 ? `Liked Movies ${likedMovies.length}` : ''}
+      {loading
+        ? ''
+        : !loading && likedMovies.length
+        ? `Liked Movies: ${likedMovies.length}`
+        : 'No liked movies yet!'}
       <main className="grid grid-cols-2 gap-8 box-border">
         {loading ? (
           <h2 className="font-extra-bold">Loading...</h2>

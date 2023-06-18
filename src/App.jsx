@@ -6,12 +6,12 @@ import { ErrorPage } from './error-page';
 
 const App = createBrowserRouter([
   {
-    path: '/',
+    path: `${process.env.PUBLIC_URL}/`,
     element: <Home />,
     errorElement: <ErrorPage />,
   },
   {
-    path: 'movie/:movieId',
+    path: `${process.env.PUBLIC_URL}/movie/:movieId`,
     element: <Detail />,
     errorElement: <ErrorPage />,
   },

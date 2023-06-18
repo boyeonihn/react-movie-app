@@ -20,12 +20,10 @@ export const Detail = () => {
     getMovie();
   }, []);
 
-  console.log(movie);
   return (
     <section>
-      <h1>Detail</h1>
       {loading ? (
-        'Loading...'
+        'Loading... Movie detail'
       ) : (
         <MovieDetail
           movie={movie}
